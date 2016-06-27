@@ -7,8 +7,8 @@ import java.util.ArrayList;
  */
 public class Game {
 
-   // private Player player1;
-    //private Player player2;
+    private Player player1;
+    private Player player2;
 
     ArrayList<Card> hand1 = new ArrayList<Card>();
     ArrayList<Card> hand2 = new ArrayList<Card>();
@@ -18,45 +18,78 @@ public class Game {
         this.player1 = player1;
         this.player2 = player2;
     }
-
-    System.out.println("Let's play War!");
-    System.out.println("*** Round Starting ***");
-
-    public Deck createDeck(){
-
-    }
-    public void shuffleDeck(){
-
-    }
-
     public void dealDeck(){
-        boolean holding = true;
 
-        for (int count = 52, deck.length >= count, count = count - 2){
+        int listSize = deck.size();
+
+        for (int count = 52, listSize >= count, count = count - 2){
             hand1.add(deck.remove(0));
             hand2.add(deck.remove(0));
         }
     }
     public String toString(){
-        return String.format("%s of %s", rank, suit);
+        return String.format("%s of %s", Card.rank, Card.suit);
     }
-    while(hand1 >= 5 && hand2 >= 5){
+    public void runGame() {
 
-        public int compareCards();{
-            for (int count = 0, count > deck, count--){
-                int compareCard1 = hand1(0);
-                System.out.println("%s's card is the " + toString(), Player.getName());
-                deck.add(hand1.remove(0));
-                int compareCard2 = hand2(0);
-                System.out.println("%s's card is the " + toString(), Player.getName());
-                deck.add(hand2.remove(0));
-                if()
+//        public Deck createDeck();
+//
+//        public void dealDeck();
+//
+//        public void shuffleDeck(){
+//
+//        }
+
+        System.out.println("Let's play War!");
+        System.out.println("*** Round Starting ***");
+
+        while (hand1.size() >= 5 && hand2.size() >= 5) {
+                for (int count = 0, count > deck.size(), count--){
+                    int compareCard1 = Rank.getValue(hand1(0)); //Need to find value of hand1(0)
+                    return compareCard1;
+                    System.out.println("%s's card is the " + Card.toString(), player1.getName());
+                    deck.add(hand1.remove(0));
+                    int compareCard2 = hand2(0);
+                    return compareCard2;
+                    System.out.println("%s's card is the " + Card.toString(), player2.getName());
+                    deck.add(hand2.remove(0));
+
+                    if (compareCard1 == compareCard2){
+                        war();
+                    }
+                    else if(compareCard1 > compareCard2){
+                        hand1.add(deck.removeRange(0,1));
+                        System.out.printf("%s wins with the " + Card.toString(), player1.getName());
+                    }
+                    else if(compareCard2 > compareCard1){
+                        hand2.add(deck.removeRange(0,1));
+                        System.out.printf("%s wins with the " + Card.toString(), player2.getName());
                 }
             }
         }
+    }
 
 
-    if player1 card is > player2 card, then player1 gets to take both cards, else player2 takes both cards.
-    System.out.println("%s wins with the " + Card.toString(), Player.getName());
+    public void war(){
+        System.out.println("#### WAR!!!! ####");
+
+        while (hand1(5) == hand2(5)) {
+
+            int compareCard1 = hand1(5);
+            System.out.println("%s's card is the " + Card.toString(), player1.getName());
+            deck.add(hand1.removeRange(0, 4));
+            int compareCard2 = hand2(5);
+            System.out.println("%s's card is the " + Card.toString(), player2.getName());
+            deck.add(hand2.removeRange(0, 4));
+            if (compareCard1 > compareCard2){
+                hand1.add(deck.removeRange(0, 9));
+                System.out.printf("%s wins the WAR!", player1.getName());
+            }
+            else(compareCard2 > compareCard1){
+                hand2.add(deck.removeRange(0, 9));
+                System.out.printf("%s wins the WAR!", player2.getName());
+            }
+        }
+    }
 }
 

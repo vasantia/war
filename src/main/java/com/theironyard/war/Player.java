@@ -24,9 +24,5 @@ public class Player {
     public void setName(String name) {
         this.name = name;
     }
-//  Player will have giveCard method remove card and set value to a variable, then can compare the variables.
-//  Player will have getCard method
-
-//  Might want to think about putting these methods in the game class instead....pros? cons?
 
 }
